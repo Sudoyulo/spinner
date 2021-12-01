@@ -1,17 +1,29 @@
-let time = 50;
+let time = 0;
 let zero = 0;
 
-let printout = ["\r|", "\r/", "\r-", "\r\\", "\r|", "\r/", "\r-", "\r\\"]
+let printout = ["\r|", "\r/", "\r-", "\r\\", "\r|", "\r/", "\r-", "\r\\"];
 
-while (time < 3000) {
+const interval = setInterval(() => {
 
-  setTimeout(() => {
-    process.stdout.write(printout[zero]);
+  process.stdout.write(printout[zero]);
+  zero = (zero + 1) % 7;
 
-    zero = (zero + 1) % 7;
+  if (time === 21) clearInterval(interval); //3 times
+  time++;
+},300);
 
-  }, time);
+interval;
 
-  time += 300;
 
-}
+// while (time < 3000) {
+
+//   setTimeout(() => {
+//     process.stdout.write(printout[zero]);
+
+//     zero = (zero + 1) % 7;
+
+//   }, time);
+
+//   time += 300;
+
+// }
